@@ -25,17 +25,6 @@ public class MathApp{
 		return msg;
 	}//End addSet
 	
-	public String addSet(IntegerSet set,String name){
-		String msg =  "No se puedo realizar la operación.\nYa existe un conjunto de nombre -" + name + "-";
-		if(!checkName(name)){
-			set.setName(name);
-			sets.add(set);
-			 msg = "Conjunto creado correctamente.";
-			 updateAmount();
-		}//End if 
-		return msg;
-	}//End addSet
-	
 	public boolean checkName(String name){
 		boolean check = false;
 		for(int i = 0; i < sets.size() && !check; i++){
@@ -100,8 +89,11 @@ public class MathApp{
 				foundSet2 = true;
 			}//End else
 		}//End for
+	
 		if( (foundSet1 &&  foundSet2) && !checkName(newSetName) ){
-			msg = addSet( sets.get(indexSet1).union(sets.get(indexSet2)),newSetName);
+			sets.add( (sets.get(indexSet1)).union(sets.get(indexSet2),newSetName) );
+			updateAmount();
+			msg = "Se ha realizado la union entre conjuntos correctamente.";
 		}//End if
 		return msg;
 	}//End union
@@ -123,7 +115,9 @@ public class MathApp{
 			}//End else
 		}//End for
 		if( (foundSet1 &&  foundSet2) && !checkName(newSetName) ){
-			msg = addSet( sets.get(indexSet1).difference(sets.get(indexSet2)),newSetName);
+			sets.add(sets.get(indexSet1).difference(sets.get(indexSet2),newSetName));
+			updateAmount();
+			msg = "Se ha realizado la diferencia entre conjuntos correctamente.";
 		}//End if
 		return msg;
 	}//End difference
@@ -144,7 +138,9 @@ public class MathApp{
 			}//End else
 		}//End for
 		if( (foundSet1 &&  foundSet2) && !checkName(newSetName) ){
-			msg = addSet( sets.get(indexSet1).intersection(sets.get(indexSet2)),newSetName);
+			sets.add(sets.get(indexSet1).intersection(sets.get(indexSet2),newSetName));
+			updateAmount();
+			msg = "Se ha realizado la interseccion entre conjuntos correctamente.";
 		}//End if
 		return msg;
 	}//End intersection
@@ -166,7 +162,9 @@ public class MathApp{
 			}//End else
 		}//End for
 		if( (foundSet1 &&  foundSet2) && !checkName(newSetName) ){
-			msg = addSet( sets.get(indexSet1).symmetricDifference(sets.get(indexSet2)),newSetName);
+			sets.add(sets.get(indexSet1).symmetricDifference(sets.get(indexSet2),newSetName));
+			updateAmount();
+			msg = "Se ha realizado la interseccion entre conjuntos correctamente.";
 		}//End if
 		return msg;
 	}//End symmetricDifference

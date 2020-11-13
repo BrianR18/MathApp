@@ -26,12 +26,8 @@ public class IntegerSet{
 		return name;
 	}//getName
 	
-	public void setCardinality(int cardinality){
-		this.cardinality = cardinality;
-	}//End setCardinality
-	
 	public int getCardinality(){
-		return cardinality;
+		return elements.size();
 	}//End getCardinality
 	
 	public void setElements(ArrayList<Integer> elements){
@@ -56,8 +52,8 @@ public class IntegerSet{
 		}//End for
 	}//End removeElement
 	
-	public IntegerSet union(IntegerSet set){
-		IntegerSet newSet = new IntegerSet();
+	public IntegerSet union(IntegerSet set,String newName){
+		IntegerSet newSet = new IntegerSet(newName);
 		ArrayList<Integer> setElement = set.getElements();
 		ArrayList<Integer> newSetelement = (ArrayList<Integer>) elements.clone();
 		for(int i = 0; i < setElement.size(); i++){
@@ -68,8 +64,8 @@ public class IntegerSet{
 		return newSet;
 	}//End union
 	
-	public IntegerSet difference(IntegerSet set){
-		IntegerSet newSet = new IntegerSet();
+	public IntegerSet difference(IntegerSet set,String newName){
+		IntegerSet newSet = new IntegerSet(newName);
 		ArrayList<Integer> s = set.getElements();
 		for(int i = 0; i < elements.size(); i++){
 			if(!s.contains(elements.get(i)))
@@ -78,8 +74,8 @@ public class IntegerSet{
 		return newSet;
 	}//End difference
 	
-	public IntegerSet intersection(IntegerSet set){
-		IntegerSet newSet = new IntegerSet();
+	public IntegerSet intersection(IntegerSet set,String newName){
+		IntegerSet newSet = new IntegerSet(newName);
 		ArrayList<Integer> setElement = set.getElements();
 		ArrayList<Integer> newSetelement = new ArrayList<Integer>();
 		int minor = (elements.size() < setElement.size())?elements.size():setElement.size();
@@ -93,8 +89,8 @@ public class IntegerSet{
 		return newSet;
 	}//End intersection
 	
-	public IntegerSet symmetricDifference(IntegerSet set){
-		IntegerSet newSet = new IntegerSet();
+	public IntegerSet symmetricDifference(IntegerSet set,String newName){
+		IntegerSet newSet = new IntegerSet(newName);
 		ArrayList<Integer> setItem = set.getElements();
 		ArrayList<Integer> newSetElements = new ArrayList<Integer>();
 		for(int i = 0; i < setItem.size(); i++){
@@ -117,7 +113,8 @@ public class IntegerSet{
 			if( (i>0) && (i%5 == 0) )
 				content += "\n*";
 		}//End for
-		content += "\n*********************************" ;
+		content += "\n*Cardinalidad: " + getCardinality() + "\n";
+		content += "*********************************" ;
 		return content;
 	}//End showContents
 }//End IntegerSet
