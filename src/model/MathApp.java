@@ -52,8 +52,7 @@ public class MathApp{
 		String msg = "No se encontro un conjunto de nombre \"" + setName + "\".";
 		for(int i = 0; i < sets.size() && !add; i++){
 			if(setName.equals(sets.get(i).getName())){
-				sets.get(i).addElement(element);
-				msg = "Se ha agregado el elemento al conjunto.";
+				msg = sets.get(i).addElement(element);
 				updateAmount();
 			}//End if
 		}//End for
@@ -65,8 +64,7 @@ public class MathApp{
 		String msg = "No se encontro un conjunto de nombre \"" + setName + "\".";
 		for(int i = 0; i < sets.size() && !add; i++){
 			if(setName.equals(sets.get(i).getName())){
-				sets.get(i).removeElement(element);
-				msg = "Se ha eliminado el elemento al conjunto.";
+				msg = sets.get(i).removeElement(element);
 				updateAmount();
 			}//End if
 		}//End for

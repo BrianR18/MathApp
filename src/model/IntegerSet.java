@@ -38,18 +38,26 @@ public class IntegerSet{
 		return elements;
 	}//End getElements
 	
-	public void addElement(int element){
-		elements.add(element);
+	public String addElement(int element){
+		String msg = "Ya existe ese elemento en el conjunto.";
+		if(!elements.contains(element)){
+			elements.add(element);
+			msg = "Elemento agregado correctamente.";
+		}
+		return msg;
 	}//End addElement
 	
-	public void removeElement(int element){
+	public String removeElement(int element){
 		boolean remove = false;
+		String msg = "No se encontro ese elemento.";
 		for(int i = 0; i < elements.size(); i++){
 			if(elements.get(i) == element){
 				elements.remove(i);
 				remove = true;
+				msg = "Se ha removido el elemento.";
 			}//End if
 		}//End for
+		return msg;
 	}//End removeElement
 	
 	public IntegerSet union(IntegerSet set,String newName){
